@@ -23,23 +23,19 @@
       <h6>This is heading 6</h6>
       <p>Put me in Coach, I'm ready to play. Today.</p>
       <center>
-        <script>
-              // Import the filesystem module
-              const fs = require("fs");
-
-              let directory_name = "example_dir";
-
-              // Function to get current filenames
-              // in directory
-              let filenames = fs.readdirSync(directory_name);
-
-              console.log("\nFilenames in directory:");
-              filenames.forEach((file) => {
-                console.log("File:", file);
-              });
-
-        </script>
-        <h1> "the list " + files </h1>
+      <?php
+        echo "Here are our files";
+        $path = ".";
+        $dh = opendir($path);
+        $i=1;
+        while (($file = readdir($dh)) !== false) {
+            if($file != "." && $file != ".." && $file != "index.php" && $file != ".htaccess" && $file != "error_log" && $file != "cgi-bin") {
+                echo "<a href='$path/$file'>$file</a><br /><br />";
+                $i++;
+            }
+        }
+        closedir($dh);
+        ?> 
       </center>
       <font size="6" color="white">This is size 6 white
         </font>
